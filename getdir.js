@@ -33,10 +33,6 @@ function getAllFileArr(allfiles) {
 }
 
 
-
-console.log("官方大哥哥发的鬼地方个梵蒂冈梵蒂冈", allfilsarr)
-
-
 // 判断多层还是一层
 const structs = {}
 allfilsarr.forEach(filePath => {
@@ -59,6 +55,7 @@ console.log("噶啥风格大嘎达发布v", structs)
 // 输出
 
 let readmeContent =formatLink(structs, '', 1)
+console.log("嘎嘎嘎嘎嘎", Object.keys(structs))
 function formatLink(obj, basePath,level) {
   let readmeContent = ''
   Object.keys(obj).forEach(k => {
@@ -66,7 +63,7 @@ function formatLink(obj, basePath,level) {
       // 这个是针对根目录下存在的独立文件
       return readmeContent += obj[k].reduce((t, c) => t + `- [${c}](/${c})\n`, '')
     }
-    readmeContent += ('\t'.repeat(level - 1) + `- [${k}](${basePath}/${k})\n`)
+    // readmeContent += ('\t'.repeat(level - 1) + `- [${k}](${basePath}/${k})\n`)
     // 如果存在子层级，则遍历子层级
     if (obj[k]._children) {
       readmeContent += obj[k]._children.reduce((t, c) => {
@@ -83,10 +80,10 @@ function formatLink(obj, basePath,level) {
       return formatLink(tempObj, `${basePath}/${k}`, level + 1)
     }
   })
-  console.log("{}{}{}{}{}{}{}{}{}{}", readmeContent)
   return readmeContent
 }
+console.log("??????????",readmeContent)
 
-fs.writeFile(path.resolve(__dirname, 'README.md'), readmeContent, ()=> {
-  console.log("成功")
-})
+// fs.writeFile(path.resolve(__dirname, 'README.md'), readmeContent, ()=> {
+//   console.log("成功")
+// })
