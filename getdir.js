@@ -84,6 +84,6 @@ function formatLink(obj, basePath,level) {
 }
 console.log("??????????",readmeContent)
 
-// fs.writeFile(path.resolve(__dirname, 'README.md'), readmeContent, ()=> {
-//   console.log("成功")
-// })
+fs.writeFile(path.resolve(__dirname, 'README.md'), readmeContent, ()=> {
+  console.log("成功")
+})
